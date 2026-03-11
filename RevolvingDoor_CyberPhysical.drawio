@@ -1,209 +1,115 @@
-<mxfile host="app.diagrams.net" modified="2026-03-09T23:00:00.000Z" agent="Claude" version="21.0.0">
-  <diagram name="CyberPhysical Diagram" id="revolving-door-cpd">
-    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-
-        <!-- ==================== ENVIRONMENT (Cloud) ==================== -->
-        <mxCell id="env_cloud" value="" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;verticalAlign=top;spacingTop=5;size=0.04;" vertex="1" parent="1">
-          <mxGeometry x="100" y="20" width="1200" height="280" as="geometry" />
-        </mxCell>
-
-        <mxCell id="env_label" value="&lt;b&gt;⚙ Environment&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="620" y="30" width="130" height="30" as="geometry" />
-        </mxCell>
-
-        <!-- Users (stick figure) -->
-        <mxCell id="users" value="Users" style="shape=mxgraph.basic.person;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="660" y="60" width="50" height="60" as="geometry" />
-        </mxCell>
-
-        <!-- Actions box -->
-        <mxCell id="actions_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="200" y="100" width="350" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="actions_icon" value="&lt;b&gt;Actions:&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=13;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="310" y="108" width="120" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="actions_text" value="ApproachSideA, ApproachSideB,&lt;br&gt;LeaveSideA, LeaveSideB,&lt;br&gt;PressPartition, ReleasePartition" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="220" y="140" width="310" height="100" as="geometry" />
-        </mxCell>
-
-        <!-- Effects box -->
-        <mxCell id="effects_box" value="&lt;b&gt;Effects&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;arcSize=10;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="610" y="150" width="100" height="60" as="geometry" />
-        </mxCell>
-
-        <!-- Sensation box -->
-        <mxCell id="sensation_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="780" y="100" width="400" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="sensation_label" value="&lt;b&gt;Sensation:&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=13;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="920" y="108" width="100" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="sensation_text" value="Permission/prohibition of entry&lt;br&gt;according to indicator lights,&lt;br&gt;door rotation status" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="810" y="140" width="340" height="100" as="geometry" />
-        </mxCell>
-
-        <!-- Arrows: Actions <-> Effects <-> Sensation -->
-        <mxCell id="arr_act_eff" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="actions_box" target="effects_box" parent="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arr_eff_sens" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="effects_box" target="sensation_box" parent="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Arrow from Users down -->
-        <mxCell id="arr_users_eff" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="users" target="effects_box" parent="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- ==================== PLANT (Middle) ==================== -->
-        <mxCell id="plant_rect" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;arcSize=5;dashed=0;" vertex="1" parent="1">
-          <mxGeometry x="100" y="340" width="1200" height="260" as="geometry" />
-        </mxCell>
-        <mxCell id="plant_label" value="&lt;b&gt;🏭 Plant&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="630" y="345" width="80" height="30" as="geometry" />
-        </mxCell>
-
-        <!-- Controls box -->
-        <mxCell id="ctrl_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="120" y="390" width="200" height="180" as="geometry" />
-        </mxCell>
-        <mxCell id="ctrl_icon" value="&lt;b&gt;➡ Controls:&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="135" y="395" width="170" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="ctrl_text" value="presenceSideA,&lt;br&gt;presenceSideB,&lt;br&gt;partitionPressure" style="text;html=1;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="135" y="425" width="170" height="130" as="geometry" />
-        </mxCell>
-
-        <!-- Sensors box -->
-        <mxCell id="sens_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="340" y="390" width="220" height="180" as="geometry" />
-        </mxCell>
-        <mxCell id="sens_icon" value="&lt;b&gt;🌡 Sensors:&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="390" y="395" width="120" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="sens_text" value="doorAngle,&lt;br&gt;isRotating" style="text;html=1;align=center;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="360" y="425" width="180" height="130" as="geometry" />
-        </mxCell>
-
-        <!-- Reconfiguration and Transformation box -->
-        <mxCell id="reconf_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="580" y="390" width="220" height="180" as="geometry" />
-        </mxCell>
-        <mxCell id="reconf_label" value="&lt;b&gt;⚙ Reconfiguration&lt;br&gt;and Transformation:&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="600" y="400" width="180" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="reconf_text" value="Door rotation,&lt;br&gt;angle change,&lt;br&gt;pressure handling" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="600" y="460" width="180" height="80" as="geometry" />
-        </mxCell>
-
-        <!-- Actuators box -->
-        <mxCell id="act_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="820" y="390" width="200" height="180" as="geometry" />
-        </mxCell>
-        <mxCell id="act_icon" value="&lt;b&gt;⚡ Actuators:&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="860" y="395" width="120" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="act_text" value="motor (motorOn)" style="text;html=1;align=center;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="840" y="425" width="160" height="130" as="geometry" />
-        </mxCell>
-
-        <!-- Indicators box -->
-        <mxCell id="ind_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="1040" y="390" width="230" height="180" as="geometry" />
-        </mxCell>
-        <mxCell id="ind_icon" value="&lt;b&gt;💡 Indicators:&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1090" y="395" width="130" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="ind_text" value="traffic lights:&lt;br&gt;lightSideA,&lt;br&gt;lightSideB" style="text;html=1;align=center;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1060" y="425" width="190" height="130" as="geometry" />
-        </mxCell>
-
-        <!-- ==================== CONTROLLER (Bottom) ==================== -->
-        <mxCell id="controller_rect" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;arcSize=5;dashed=0;" vertex="1" parent="1">
-          <mxGeometry x="200" y="650" width="1000" height="280" as="geometry" />
-        </mxCell>
-        <mxCell id="controller_label" value="&lt;b&gt;🎛 Controller&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="620" y="655" width="110" height="30" as="geometry" />
-        </mxCell>
-
-        <!-- Analog/Digital Inputs -->
-        <mxCell id="adinput_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="230" y="700" width="270" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="adinput_label" value="&lt;b&gt;➡ Analog/Digital Inputs:&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="705" width="230" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="adinput_text" value="presenceSideA, presenceSideB,&lt;br&gt;partitionPressure&lt;br&gt;&lt;hr&gt;doorAngle, isRotating" style="text;html=1;align=center;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="240" y="735" width="250" height="150" as="geometry" />
-        </mxCell>
-
-        <!-- Control Software -->
-        <mxCell id="software_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="530" y="700" width="280" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="software_label" value="&lt;b&gt;Control Software&lt;br&gt;(Info Transformation):&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="560" y="710" width="220" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="software_text" value="⚙ control processes&lt;br&gt;(MainControl,&lt;br&gt;StartRotation,&lt;br&gt;StopRotation,&lt;br&gt;PauseRotation)" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="560" y="770" width="220" height="110" as="geometry" />
-        </mxCell>
-
-        <!-- Analog/Digital Outputs -->
-        <mxCell id="adoutput_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;arcSize=10;" vertex="1" parent="1">
-          <mxGeometry x="840" y="700" width="320" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="adoutput_label" value="&lt;b&gt;⬅ Analog/Digital Outputs:&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=12;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="870" y="705" width="260" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="adoutput_text" value="motorOn&lt;br&gt;&lt;hr&gt;lightSideA,&lt;br&gt;lightSideB" style="text;html=1;align=center;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="860" y="735" width="280" height="150" as="geometry" />
-        </mxCell>
-
-        <!-- ==================== ARROWS between layers ==================== -->
-
-        <!-- Environment -> Plant (left side: Controls) -->
-        <mxCell id="arr_env_ctrl" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="env_cloud" target="ctrl_box" parent="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Plant -> Environment (right side: Indicators) -->
-        <mxCell id="arr_ind_env" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.85;entryY=1;entryDx=0;entryDy=0;" edge="1" source="ind_box" target="env_cloud" parent="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Plant Controls -> Controller Inputs -->
-        <mxCell id="arr_ctrl_adinp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" edge="1" source="ctrl_box" target="adinput_box" parent="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Plant Sensors -> Controller Inputs -->
-        <mxCell id="arr_sens_adinp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.7;entryY=0;entryDx=0;entryDy=0;" edge="1" source="sens_box" target="adinput_box" parent="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Controller Outputs -> Plant Actuators -->
-        <mxCell id="arr_adout_act" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.3;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" source="adoutput_box" target="act_box" parent="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Controller Outputs -> Plant Indicators -->
-        <mxCell id="arr_adout_ind" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.7;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" source="adoutput_box" target="ind_box" parent="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Controller: Inputs -> Software -> Outputs -->
-        <mxCell id="arr_inp_sw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="adinput_box" target="software_box" parent="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arr_sw_out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="software_box" target="adoutput_box" parent="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram name="CyberPhysical Diagram" id="revolving-door-cpd">
+        <mxGraphModel dx="3620" dy="3623" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="env_cloud" value="" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" parent="1" vertex="1">
+                    <mxGeometry x="-330" y="-220" width="2030" height="550" as="geometry"/>
+                </mxCell>
+                <mxCell id="env_label" value="&lt;b&gt;Environment&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;autosize=1;fontSize=18;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="-150" width="210" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="users" value="Users" style="shape=umlActor;html=1;whiteSpace=wrap;strokeColor=#000000;fillColor=#ffffff;fontSize=13;verticalLabelPosition=bottom;verticalAlign=top;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="685" y="-110" width="60" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="actions_box" value="&lt;b&gt;Actions&lt;/b&gt;&lt;hr&gt;ApproachSideA, ApproachSideB&lt;br&gt;LeaveSideA, LeaveSideB&lt;br&gt;PressPartition, ReleasePartition&lt;br&gt;PressForwardButton, ReleaseForwardButton&lt;br&gt;PressBackwardButton, ReleaseBackwardButton" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.4;fontSize=13;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="10" width="420" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="effects_box" value="&lt;b&gt;Effects&lt;/b&gt;&lt;hr&gt;Passage availability&lt;br&gt;Visible door movement in selected direction&lt;br&gt;Temporary stop under pressure" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.4;fontSize=13;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="635" y="50" width="230" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="sensation_box" value="&lt;b&gt;Sensation&lt;/b&gt;&lt;hr&gt;User sees traffic lights&lt;br&gt;and perceives forward / backward rotation&lt;br&gt;or temporary stop" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.4;fontSize=13;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="930" y="40" width="320" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="plant_rect" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.6;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="390" width="1210" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="plant_label" value="&lt;b&gt;Plant&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;autosize=1;fontSize=18;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="655" y="400" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ctrl_box" value="&lt;b&gt;Controls&lt;/b&gt;&lt;hr&gt;presenceSideA, presenceSideB &lt;b&gt;OUT&lt;/b&gt;&lt;br&gt;partitionPressure &lt;b&gt;OUT&lt;/b&gt;&lt;hr&gt;rotateForwardButton, rotateBackwardButton &lt;b&gt;OUT&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.4;fontSize=13;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="110" y="435" width="245" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="sens_box" value="&lt;b&gt;Sensors&lt;/b&gt;&lt;hr&gt;Plant &lt;b&gt;FROM&lt;/b&gt; angle / motion sensors&lt;hr&gt;doorAngle, isRotating &lt;b&gt;OUT&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.4;fontSize=13;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="435" width="220" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="reconf_box" value="&lt;b&gt;Reconfiguration and Transformation&lt;/b&gt;&lt;hr&gt;Door sections rotation forward / backward&lt;hr&gt;Angular position change&lt;br&gt;Temporary stop due to pressure" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.4;fontSize=13;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="625" y="435" width="285" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="act_box" value="&lt;b&gt;Actuators (motor)&lt;/b&gt;&lt;hr&gt;&lt;b&gt;IN&lt;/b&gt; motorOn, rotationForward &lt;b&gt;TO&lt;/b&gt; Plant" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.4;fontSize=13;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="935" y="435" width="165" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="ind_box" value="&lt;b&gt;Indicators (traffic lights)&lt;/b&gt;&lt;hr&gt;&lt;b&gt;IN&lt;/b&gt; lightSideA, lightSideB &lt;b&gt;OUT&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.4;fontSize=13;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="435" width="160" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="controller_rect" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.6;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="730" width="1080" height="255" as="geometry"/>
+                </mxCell>
+                <mxCell id="controller_label" value="&lt;b&gt;Controller&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;autosize=1;fontSize=18;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="635" y="740" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="adinput_box" value="&lt;b&gt;Analog/Digital Inputs&lt;/b&gt;&lt;hr&gt;&lt;b&gt;IN&lt;/b&gt; presenceSideA : BOOL&lt;br&gt;&lt;b&gt;IN&lt;/b&gt; presenceSideB : BOOL&lt;br&gt;&lt;b&gt;IN&lt;/b&gt; partitionPressure : BOOL&lt;br&gt;&lt;b&gt;IN&lt;/b&gt; rotateForwardButton : BOOL&lt;br&gt;&lt;b&gt;IN&lt;/b&gt; rotateBackwardButton : BOOL&lt;hr&gt;&lt;b&gt;IN&lt;/b&gt; doorAngle : REAL&lt;br&gt;&lt;b&gt;IN&lt;/b&gt; isRotating : BOOL" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.4;fontSize=13;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="195" y="780" width="350" height="185" as="geometry"/>
+                </mxCell>
+                <mxCell id="software_box" value="&lt;b&gt;Control Software (Info Transformation)&lt;/b&gt;&lt;hr&gt;MainControl&lt;hr&gt;StartRotationForward,&lt;br&gt;StartRotationBackward,&lt;br&gt;StopRotation, PauseRotation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.4;fontSize=13;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="575" y="780" width="305" height="185" as="geometry"/>
+                </mxCell>
+                <mxCell id="adoutput_box" value="&lt;b&gt;Analog/Digital Outputs&lt;/b&gt;&lt;hr&gt;&lt;b&gt;OUT&lt;/b&gt; motorOn : BOOL&lt;br&gt;&lt;b&gt;OUT&lt;/b&gt; rotationForward : BOOL&lt;hr&gt;&lt;b&gt;OUT&lt;/b&gt; lightSideA : BOOL&lt;br&gt;&lt;b&gt;OUT&lt;/b&gt; lightSideB : BOOL" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.4;fontSize=13;align=center;verticalAlign=middle;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="915" y="780" width="310" height="185" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_users_actions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="users" target="actions_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_effects_sensation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="effects_box" target="sensation_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_sensation_users" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="sensation_box" target="users" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1070" y="-62"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arr_actions_controls" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="actions_box" target="ctrl_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_effects_reconf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;startArrow=block;startFill=1;endArrow=block;endFill=1;" parent="1" source="effects_box" target="reconf_box" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="767" y="260"/>
+                            <mxPoint x="767" y="260"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arr_indicators_sensation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="ind_box" target="sensation_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_reconf_sensors" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="reconf_box" target="sens_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_actuators_reconf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="act_box" target="reconf_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_controls_inputs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="ctrl_box" target="adinput_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_sensors_inputs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="sens_box" target="adinput_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_inputs_software" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="adinput_box" target="software_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_software_outputs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="software_box" target="adoutput_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_outputs_actuators" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="adoutput_box" target="act_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_outputs_indicators" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.5;endArrow=block;endFill=1;" parent="1" source="adoutput_box" target="ind_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>

@@ -107,6 +107,9 @@ add_run(p, 'partitionPressure', bold=True)
 add_run(p, ') вращение приостанавливается на время ')
 add_run(p, 'PAUSE_DURATION', bold=True)
 add_run(p, ', после чего возобновляется, если таймер ещё не истёк.')
+add_run(p, ' Для ручного управления предусмотрены специальные кнопки ')
+add_run(p, 'rotateForwardButton / rotateBackwardButton', bold=True)
+add_run(p, ', позволяющие вращать дверь вперёд или назад, пока соответствующая кнопка удерживается нажатой.')
 
 # Paragraph 2
 p = make_para(doc, J)
@@ -138,6 +141,7 @@ add_run(p, ':')
 add_simple(doc, 'Кнопка "Исходное".', align=J)
 add_simple(doc, 'Оператор может имитировать подход пользователя с каждой стороны (кнопки ApproachSideA / ApproachSideB).', align=J)
 add_simple(doc, 'Оператор может имитировать давление на перегородку (кнопка PressPartition / ReleasePartition).', align=J)
+add_simple(doc, 'Оператор может нажимать специальные кнопки rotateForwardButton / rotateBackwardButton для ручного вращения двери вперёд или назад.', align=J)
 add_simple(doc, 'Попытка войти при красном индикаторе приводит к выдаче сообщения об ошибке.', align=J)
 
 add_empty(doc)
@@ -162,6 +166,8 @@ add_simple(doc, 'Двигатель запускается при срабаты
 add_simple(doc, 'Двигатель останавливается по истечении таймера ROTATION_TIME.', align=J)
 add_simple(doc, 'При давлении на перегородку двигатель останавливается на PAUSE_DURATION секунд.', align=J)
 add_simple(doc, 'Светофоры переключаются в зависимости от состояния двери (вращение/остановка/пауза).', align=J)
+add_simple(doc, 'При нажатии rotateForwardButton дверь должна вращаться вперёд, а при нажатии rotateBackwardButton — назад.', align=J)
+add_simple(doc, 'Одновременное нажатие rotateForwardButton и rotateBackwardButton недопустимо и не должно запускать двигатель.', align=J)
 
 add_empty(doc)
 add_empty(doc)
@@ -173,7 +179,7 @@ add_empty(doc)
 
 p = make_para(doc, J)
 add_run(p, 'Environment', bold=True)
-add_run(p, ': ApproachSideA, ApproachSideB, LeaveSideA, LeaveSideB, PressPartition, ReleasePartition')
+add_run(p, ': ApproachSideA, ApproachSideB, LeaveSideA, LeaveSideB, PressPartition, ReleasePartition, PressForwardButton, ReleaseForwardButton, PressBackwardButton, ReleaseBackwardButton')
 
 p = make_para(doc, J)
 add_run(p, 'Constants', bold=True)
@@ -183,7 +189,7 @@ p = make_para(doc, J)
 add_run(p, 'Controls', bold=True)
 add_run(p, ': ')
 
-add_simple(doc, 'presenceSideA, presenceSideB, partitionPressure', align=J)
+add_simple(doc, 'presenceSideA, presenceSideB, partitionPressure, rotateForwardButton, rotateBackwardButton', align=J)
 
 p = make_para(doc, J)
 add_run(p, 'Sensors: ', bold=True)
@@ -192,7 +198,7 @@ add_simple(doc, 'doorAngle, isRotating', align=J)
 
 p = make_para(doc, J)
 add_run(p, 'Actuators', bold=True)
-add_run(p, ': motorOn')
+add_run(p, ': motorOn, rotationForward')
 
 p = make_para(doc, J)
 add_run(p, 'Indicators: ', bold=True)
@@ -211,10 +217,10 @@ add_simple(doc, 'Имитировать давление на перегород
 
 add_empty(doc)
 
-p = make_para(doc)
-add_run(p, 'Включить/выключить двигатель вручную (')
-add_run(p, 'motorOn', bold=True)
-add_run(p, '). При включении двигателя при активном давлении на перегородку \u2014 ошибка.')
+add_simple(doc, 'Нажать/отпустить rotateForwardButton для вращения двери вперёд.', align=J)
+add_simple(doc, 'Нажать/отпустить rotateBackwardButton для вращения двери назад.', align=J)
+add_simple(doc, 'При активном давлении на перегородку нажатие любой из кнопок ручного вращения должно приводить к ошибке.', align=J)
+add_simple(doc, 'Одновременное нажатие rotateForwardButton и rotateBackwardButton недопустимо.', align=J)
 
 add_empty(doc)
 
@@ -227,6 +233,7 @@ add_empty(doc)
 add_simple(doc, 'Controls: ')
 add_simple(doc, 'Имитировать подход пользователя со стороны A, стороны B.')
 add_simple(doc, 'При срабатывании сенсора дверь вращается ROTATION_TIME. При закрытых индикаторах \u2014 ошибка.')
+add_simple(doc, 'Нажатие rotateForwardButton / rotateBackwardButton запускает ручное вращение в выбранном направлении, пока кнопка удерживается нажатой.')
 
 add_empty(doc)
 add_empty(doc)
@@ -245,7 +252,7 @@ add_run(p, ': ROTATION_SPEED, ROTATION_TIME, PAUSE_DURATION, SECTION_COUNT')
 
 p = make_para(doc, J)
 add_run(p, 'Controls', bold=True)
-add_run(p, ': presenceSideA, presenceSideB, partitionPressure')
+add_run(p, ': presenceSideA, presenceSideB, partitionPressure, rotateForwardButton, rotateBackwardButton')
 
 p = make_para(doc, J)
 add_run(p, 'Sensors: ', bold=True)
@@ -253,7 +260,7 @@ add_run(p, 'doorAngle, isRotating')
 
 p = make_para(doc, J)
 add_run(p, 'Actuators', bold=True)
-add_run(p, ': motorOn')
+add_run(p, ': motorOn, rotationForward')
 
 p = make_para(doc, J)
 add_run(p, 'Indicators: ', bold=True)
@@ -283,6 +290,9 @@ add_var_line(doc, 'presenceSideA')
 add_var_line(doc, 'presenceSideB')
 add_code_line(doc, '\t(* Partition pressure sensor *)', bold=True)
 add_var_line(doc, 'partitionPressure')
+add_code_line(doc, '\t(* Manual rotation buttons *)', bold=True)
+add_var_line(doc, 'rotateForwardButton')
+add_var_line(doc, 'rotateBackwardButton')
 add_code_line(doc, '\t(* Door angle sensor *)', bold=True)
 add_var_line(doc, 'doorAngle', 'REAL')
 add_code_line(doc, '\t(* Rotation status *)', bold=True)
@@ -291,6 +301,7 @@ add_code_line(doc, '(* END_VAR', bold=True)
 add_code_line(doc, 'VAR *) (* VAR_OUTPUT *)', bold=True)
 add_code_line(doc, '\t(* Motor control *)', bold=True)
 add_var_line(doc, 'motorOn')
+add_var_line(doc, 'rotationForward')
 add_code_line(doc, '\t(* Traffic lights *)', bold=True)
 add_var_line(doc, 'lightSideA')
 add_var_line(doc, 'lightSideB')
@@ -308,10 +319,13 @@ plant_lines = [
     ('    presenceSideA := FALSE;', False),
     ('    presenceSideB := FALSE;', False),
     ('    partitionPressure := FALSE;', False),
+    ('    rotateForwardButton := FALSE;', False),
+    ('    rotateBackwardButton := FALSE;', False),
     ('    doorAngle := 0.0;', False),
     ('    isRotating := FALSE;', False),
     ('(* outputs: *)', True),
     ('    motorOn := FALSE;', False),
+    ('    rotationForward := TRUE;', False),
     ('    lightSideA := TRUE;', False),
     ('    lightSideB := TRUE;', False),
     ('    START PROCESS MotorSim;', False),
@@ -341,10 +355,17 @@ plant_lines = [
     ('\tEND_VAR', True),
     ('\tSTATE check_rotation LOOPED ', False),
     ('\t\tIF isRotating THEN', False),
-    ('\t\t\tdoorAngle := doorAngle + ROTATION_SPEED;', False),
+    ('\t\t\tIF rotationForward THEN', False),
+    ('\t\t\t\tdoorAngle := doorAngle + ROTATION_SPEED;', False),
+    ('\t\t\tELSE', False),
+    ('\t\t\t\tdoorAngle := doorAngle - ROTATION_SPEED;', False),
+    ('\t\t\tEND_IF', False),
     ('\t\tEND_IF', False),
     ('\t\tIF doorAngle >= MAX_ANGLE THEN ', False),
     ('\t\t\tdoorAngle := doorAngle - MAX_ANGLE;', False),
+    ('\t\tEND_IF', False),
+    ('\t\tIF doorAngle < 0.0 THEN ', False),
+    ('\t\t\tdoorAngle := doorAngle + MAX_ANGLE;', False),
     ('\t\tEND_IF', False),
     ('\tEND_STATE', False),
     ('END_PROCESS', False),
@@ -382,6 +403,9 @@ ctrl_lines = [
     ('         presenceSideB : BOOL;', False),
     ('\t(* Partition pressure sensor *)', True),
     ('         partitionPressure : BOOL;', False),
+    ('\t(* Manual rotation buttons *)', True),
+    ('         rotateForwardButton : BOOL;', False),
+    ('         rotateBackwardButton : BOOL;', False),
     ('\t(* Door angle sensor *)', True),
     ('         doorAngle : REAL;', False),
     ('\t(* Rotation status *)', True),
@@ -390,6 +414,7 @@ ctrl_lines = [
     ('VAR (* VAR_OUTPUT *)', True),
     ('\t(* Motor control *)', True),
     ('         motorOn : BOOL;', False),
+    ('         rotationForward : BOOL;', False),
     ('\t(* Traffic lights *)', True),
     ('         lightSideA : BOOL;', False),
     ('\tlightSideB : BOOL;', False),
@@ -400,10 +425,24 @@ ctrl_lines = [
     ('  END_VAR', True),
     ('  VAR', True),
     ('    timer : INT := 0;', False),
+    ('    manualActive : BOOL := FALSE;', False),
+    ('    manualDirectionForward : BOOL := TRUE;', False),
     ('  END_VAR', True),
     ('  STATE idle', False),
-    ('    IF (presenceSideA OR presenceSideB) THEN', False),
-    ('      START PROCESS StartRotation;', False),
+    ('    IF rotateForwardButton AND NOT rotateBackwardButton THEN', False),
+    ('      manualActive := TRUE;', False),
+    ('      manualDirectionForward := TRUE;', False),
+    ('      START PROCESS StartRotationForward;', False),
+    ('      SET STATE manualRotation;', False),
+    ('    ELSIF rotateBackwardButton AND NOT rotateForwardButton THEN', False),
+    ('      manualActive := TRUE;', False),
+    ('      manualDirectionForward := FALSE;', False),
+    ('      START PROCESS StartRotationBackward;', False),
+    ('      SET STATE manualRotation;', False),
+    ('    ELSIF (presenceSideA OR presenceSideB) THEN', False),
+    ('      manualActive := FALSE;', False),
+    ('      manualDirectionForward := TRUE;', False),
+    ('      START PROCESS StartRotationForward;', False),
     ('      timer := ROTATION_TIME;', False),
     ('      SET STATE rotating;', False),
     ('    END_IF', False),
@@ -422,12 +461,42 @@ ctrl_lines = [
     ('      SET STATE idle;', False),
     ('    END_IF', False),
     ('  END_STATE', False),
+    ('  STATE manualRotation LOOPED', False),
+    ('    IF partitionPressure THEN', False),
+    ('      START PROCESS PauseRotation;', False),
+    ('      SET STATE paused;', False),
+    ('    ELSIF rotateForwardButton AND rotateBackwardButton THEN', False),
+    ('      START PROCESS StopRotation;', False),
+    ('      manualActive := FALSE;', False),
+    ('      SET STATE idle;', False),
+    ('    ELSIF manualDirectionForward AND rotateForwardButton THEN', False),
+    ('      START PROCESS StartRotationForward;', False),
+    ('    ELSIF (NOT manualDirectionForward) AND rotateBackwardButton THEN', False),
+    ('      START PROCESS StartRotationBackward;', False),
+    ('    ELSE', False),
+    ('      START PROCESS StopRotation;', False),
+    ('      manualActive := FALSE;', False),
+    ('      SET STATE idle;', False),
+    ('    END_IF', False),
+    ('  END_STATE', False),
     ('  STATE paused', False),
     ('    IF (PROCESS PauseRotation IN STATE STOP) THEN', False),
-    ('      IF timer > 0 THEN', False),
-    ('        START PROCESS StartRotation;', False),
+    ('      IF manualActive THEN', False),
+    ('        IF manualDirectionForward AND rotateForwardButton THEN', False),
+    ('          START PROCESS StartRotationForward;', False),
+    ('          SET STATE manualRotation;', False),
+    ('        ELSIF (NOT manualDirectionForward) AND rotateBackwardButton THEN', False),
+    ('          START PROCESS StartRotationBackward;', False),
+    ('          SET STATE manualRotation;', False),
+    ('        ELSE', False),
+    ('          START PROCESS StopRotation;', False),
+    ('          manualActive := FALSE;', False),
+    ('          SET STATE idle;', False),
+    ('        END_IF', False),
+    ('      ELSIF timer > 0 THEN', False),
+    ('        START PROCESS StartRotationForward;', False),
     ('        SET STATE rotating;', False),
-    ('      ELSIF', False),
+    ('      ELSE', False),
     ('        START PROCESS StopRotation;', False),
     ('        SET STATE idle;', False),
     ('      END_IF', False),
@@ -435,9 +504,20 @@ ctrl_lines = [
     ('  END_STATE', False),
     ('END_PROCESS', False),
     ('', False),
-    ('PROCESS StartRotation', True),
+    ('PROCESS StartRotationForward', True),
     ('  STATE init', False),
     ('    motorOn := TRUE;', False),
+    ('    rotationForward := TRUE;', False),
+    ('    lightSideA := TRUE;', False),
+    ('    lightSideB := TRUE;', False),
+    ('    STOP;', False),
+    ('  END_STATE', False),
+    ('END_PROCESS', False),
+    ('', False),
+    ('PROCESS StartRotationBackward', True),
+    ('  STATE init', False),
+    ('    motorOn := TRUE;', False),
+    ('    rotationForward := FALSE;', False),
     ('    lightSideA := TRUE;', False),
     ('    lightSideB := TRUE;', False),
     ('    STOP;', False),
@@ -447,6 +527,7 @@ ctrl_lines = [
     ('PROCESS StopRotation', True),
     ('  STATE init', False),
     ('    motorOn := FALSE;', False),
+    ('    rotationForward := TRUE;', False),
     ('    lightSideA := TRUE;', False),
     ('    lightSideB := TRUE;', False),
     ('    STOP;', False),
@@ -498,7 +579,7 @@ add_empty(doc)
 add_empty(doc)
 
 # ============ REQUIREMENTS TABLE ============
-table = doc.add_table(rows=12, cols=7)
+table = doc.add_table(rows=16, cols=7)
 table.style = 'Table Grid'
 
 # Header row - all bold, 10pt
@@ -565,6 +646,68 @@ rows_data = [
     # Row 11 - empty
     {0: [('', False)], 1: [('', False)], 2: [('', False)], 3: [('', False)],
      4: [('', False)], 5: [('', False)], 6: [('', False)]},
+]
+
+rows_data = [
+    {0: [('default', False)],
+     1: [('TRUE', True)], 2: [('FALSE', True)], 3: [('TRUE', True)],
+     4: [('TRUE', True)], 5: [('TRUE', True)], 6: [('TRUE', True)]},
+    {0: [('Дверь должна начать вращаться при активации одного из двух сенсоров движения', False)],
+     1: [('presenceSideA.RE OR presenceSideB.RE', False)],
+     2: [('FALSE', True)], 3: [('TRUE', True)], 4: [('TRUE', True)],
+     5: [('motorOn AND rotationForward', False)], 6: [('TRUE', True)]},
+    {0: [('Дверь должна вращаться в течение заданного времени ROTATION_TIME после последней активации сенсора', False)],
+     1: [('presenceSideA.RE OR presenceSideB.RE', False)],
+     2: [('FALSE', True)], 3: [('tau(#ROTATION_TIME)', False)], 4: [('TRUE', True)],
+     5: [('motorOn AND rotationForward', False)], 6: [('NOT ', True), ('motorOn', False)]},
+    {0: [('При нажатии rotateForwardButton дверь должна начать вращаться вперёд', False)],
+     1: [('rotateForwardButton.RE', False)],
+     2: [('FALSE', True)], 3: [('TRUE', True)], 4: [('TRUE', True)],
+     5: [('motorOn AND rotationForward', False)], 6: [('TRUE', True)]},
+    {0: [('При нажатии rotateBackwardButton дверь должна начать вращаться назад', False)],
+     1: [('rotateBackwardButton.RE', False)],
+     2: [('FALSE', True)], 3: [('TRUE', True)], 4: [('TRUE', True)],
+     5: [('motorOn AND NOT rotationForward', False)], 6: [('TRUE', True)]},
+    {0: [('Одновременное нажатие rotateForwardButton и rotateBackwardButton не должно запускать двигатель', False)],
+     1: [('rotateForwardButton AND rotateBackwardButton', False)],
+     2: [('FALSE', True)], 3: [('TRUE', True)], 4: [('TRUE', True)],
+     5: [('NOT motorOn', False)], 6: [('TRUE', True)]},
+    {0: [('При давлении на перегородку вращение должно быть приостановлено', False)],
+     1: [('partitionPressure', False)],
+     2: [('FALSE', True)], 3: [('TRUE', True)], 4: [('TRUE', True)],
+     5: [('NOT ', True), ('motorOn', False)], 6: [('TRUE', True)]},
+    {0: [('После снятия давления вращение возобновляется через PAUSE_DURATION если таймер ещё не истёк', False)],
+     1: [('partitionPressure.FE AND timer > 0', False)],
+     2: [('FALSE', True)], 3: [('tau(#PAUSE_DURATION)', False)], 4: [('TRUE', True)],
+     5: [('TRUE', True)], 6: [('motorOn', False)]},
+    {0: [('Индикатор на стороне A должен гореть зелёным при нормальном вращении', False)],
+     1: [('motorOn AND ', False), ('NOT ', True), ('partitionPressure', False)],
+     2: [('FALSE', True)], 3: [('TRUE', True)], 4: [('TRUE', True)],
+     5: [('lightSideA', False)], 6: [('TRUE', True)]},
+    {0: [('Индикатор на стороне B должен гореть зелёным при нормальном вращении', False)],
+     1: [('motorOn AND ', False), ('NOT ', True), ('partitionPressure', False)],
+     2: [('FALSE', True)], 3: [('TRUE', True)], 4: [('TRUE', True)],
+     5: [('lightSideB', False)], 6: [('TRUE', True)]},
+    {0: [('Индикаторы должны гореть красным при паузе (давление на перегородку)', False)],
+     1: [('partitionPressure', False)],
+     2: [('FALSE', True)], 3: [('TRUE', True)], 4: [('TRUE', True)],
+     5: [('NOT ', True), ('lightSideA AND ', False), ('NOT ', True), ('lightSideB', False)],
+     6: [('TRUE', True)]},
+    {0: [('Дверь не должна вращаться при истёкшем таймере и отсутствии активации сенсоров', False)],
+     1: [('TRUE', True)], 2: [('FALSE', True)], 3: [('TRUE', True)], 4: [('TRUE', True)],
+     5: [('NOT ', True), ('(motorOn AND timer <= 0)', False)],
+     6: [('TRUE', True)]},
+    {0: [('Индикаторы должны гореть зелёным в исходном состоянии (дверь стоит, вход разрешён)', False)],
+     1: [('NOT ', True), ('motorOn AND ', False), ('NOT ', True), ('partitionPressure', False)],
+     2: [('FALSE', True)], 3: [('TRUE', True)], 4: [('TRUE', True)],
+     5: [('lightSideA AND lightSideB', False)],
+     6: [('TRUE', True)]},
+    {0: [('При включённом двигателе датчик isRotating должен быть активен', False)],
+     1: [('motorOn', False)], 2: [('FALSE', True)], 3: [('TRUE', True)], 4: [('TRUE', True)],
+     5: [('isRotating', False)], 6: [('TRUE', True)]},
+    {0: [('При вращении значение doorAngle должно изменяться', False)],
+     1: [('motorOn', False)], 2: [('FALSE', True)], 3: [('TRUE', True)], 4: [('TRUE', True)],
+     5: [('doorAngle >= 0.0', False)], 6: [('TRUE', True)]},
 ]
 
 for ri, row_dict in enumerate(rows_data):
